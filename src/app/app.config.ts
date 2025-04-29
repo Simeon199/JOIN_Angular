@@ -4,8 +4,6 @@ import { routes } from './app.routes';
 
 import { provideFirebaseApp, initializeApp, FirebaseApp } from '@angular/fire/app';
 import {provideFirestore, getFirestore} from '@angular/fire/firestore';
-// import { provideDatabase, getDatabase } from '@angular/fire/database';
-// import { firebaseConfig } from './environments/firebase_config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,9 +13,5 @@ export const appConfig: ApplicationConfig = {
       return initializeApp(firebaseConfig);
     }),
     provideFirestore(() => getFirestore()),
-    // provideDatabase(() => {
-    //   const app = inject(FirebaseApp);
-    //   return getDatabase(app);
-    // }),
   ]
 };

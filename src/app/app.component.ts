@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Firestore, collection, getDocs, addDoc } from '@angular/fire/firestore';
-// import { Database, ref, push, get, child } from '@angular/fire/database';
 import { RouterOutlet } from '@angular/router';
 import { Task } from './models/task.model';
 
@@ -19,13 +18,10 @@ import { Task } from './models/task.model';
 export class AppComponent implements OnInit {
   title = 'JOIN';
   private firestore = inject(Firestore);
-  // private db = inject(Database);
   tasks: Task[] = [];
 
   ngOnInit(): void {
     this.loadTasks();
-    // this.createTestTask();
-    // this.loadTasks();
   }
 
   async loadTasks(){
@@ -52,36 +48,4 @@ export class AppComponent implements OnInit {
       console.error('Fehler beim Hinzufügen: ', error);
     }
   }
-
-  // createTestTask(){
-  //   const tasksRef = ref(this.db, 'tasks');
-  //   const newTask = {
-  //     title: 'Testaufgabe',
-  //     description: 'Diese Aufgabe wurde automatisch erstellt.',
-  //     createdAt: new Date().toISOString()
-  //   }
-  //   push(tasksRef, newTask)
-  //   .then(() => console.log('Task erfolgreich erstellt!'))
-  //   .catch((error) => console.error('Fehler beim Erstellen: ', error));
-  // };
-
-  // async loadTasks(){
-  //   const tasksRef = ref(this.db, 'tasks');
-  //   try {
-  //     const snapshot = await get(tasksRef);
-  //     if(snapshot.exists()){
-  //       const data = snapshot.val();
-  //       // Convert objekt into array of tasks with IDs
-  //       this.tasks = Object.entries(data).map(([key, value]: any) => ({
-  //         id: key,
-  //         ...value
-  //       }));
-  //       console.log('Tasks geladen: ', this.tasks);
-  //     } else {
-  //       console.log('Keine Tasks gefunden.');
-  //     }
-  //   } catch(error){
-  //     console.error('Fehler beim Laden: ', error);
-  //   }
-  // }
 }
