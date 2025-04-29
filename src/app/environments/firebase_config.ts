@@ -1,4 +1,4 @@
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyAyeBznRT-zHCp2wccNzHGH6YEbHNVZtsw",
   authDomain: "join-angular-3a3f2.firebaseapp.com",
   databaseURL: "https://join-angular-3a3f2-default-rtdb.europe-west1.firebasedatabase.app",
