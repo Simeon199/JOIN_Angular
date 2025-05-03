@@ -6,7 +6,9 @@
     </div>
     <div class="register-form-wrapper">
         <div class="headline-and-arrow-container">
-            <img src="assets/img/arrow-left-line.png" alt="arrow-left-line">
+            <button [routerLink]="['/login']">
+                <img src="assets/img/arrow-left-line.png" alt="arrow-left-line">
+            </button>
             <div class="h2-and-blue-line-wrapper">
                 <h2>Sign up</h2>
                 <div class="blue-line"></div>
@@ -16,16 +18,24 @@
             <div class="form-class">
                 <div class="input-wrapper">
                     <input type="text" id="name" placeholder="Name" required>
+                    <img src="assets/img/person.svg" alt="person" width="24" height="24">
                 </div>
                 <div class="input-wrapper">
                     <input type="text" id="email" placeholder="Email" required>
+                    <img src="/assets/img/mail.svg" alt="mail">
                 </div>
                 <div class="input-wrapper">
                     <input type="text" id="password" placeholder="Password" required>
+                    <img src="assets/img/lock.svg" alt="lock">
                 </div>
                 <div class="input-wrapper">
                     <input type="text" id="passwordConfirmed" placeholder="Confirm Password" required>
+                    <img src="assets/img/lock.svg" alt="lock">
                 </div>
+            </div>
+            <div class="validate-form-wrapper">
+                <div class="checkbox"></div>
+                <span>I accept the <a href="#">Privacy Policy</a></span>
             </div>
             <div class="signUp-button">
                 <button>Sign up</button>
