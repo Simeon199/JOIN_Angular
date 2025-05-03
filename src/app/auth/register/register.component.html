@@ -14,22 +14,22 @@
                 <div class="blue-line"></div>
             </div>
         </div>
-        <form action="onsubmit">
+        <form [formGroup]="registerForm">
             <div class="form-class">
                 <div class="input-wrapper">
-                    <input type="text" id="name" placeholder="Name" required>
+                    <input id="name" type="text" formControlName="name" placeholder="Name" required>
                     <img src="assets/img/person.svg" alt="person" width="24" height="24">
                 </div>
                 <div class="input-wrapper">
-                    <input type="text" id="email" placeholder="Email" required>
+                    <input id="email" type="text" formControlEmail="email" placeholder="Email" required>
                     <img src="/assets/img/mail.svg" alt="mail">
                 </div>
                 <div class="input-wrapper">
-                    <input type="text" id="password" placeholder="Password" required>
+                    <input id="password" type="password" formControlPassword="password" placeholder="Password" required>
                     <img src="assets/img/lock.svg" alt="lock">
                 </div>
                 <div class="input-wrapper">
-                    <input type="text" id="passwordConfirmed" placeholder="Confirm Password" required>
+                    <input id="passwordConfirmed" type="password" formControlPasswordRepeated="passwordRepeated" placeholder="Confirm Password" required>
                     <img src="assets/img/lock.svg" alt="lock">
                 </div>
             </div>
