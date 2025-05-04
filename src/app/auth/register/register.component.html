@@ -14,22 +14,34 @@
                 <div class="blue-line"></div>
             </div>
         </div>
-        <form [formGroup]="registerForm">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-class">
                 <div class="input-wrapper">
-                    <input id="name" type="text" formControlName="name" placeholder="Name" required>
+                    <input id="name" type="text" formControlName="name" placeholder="Name">
+                    <div class="error" *ngIf="submitted && registerForm.get('name')?.invalid">
+                        Please enter a valid email
+                    </div>
                     <img src="assets/img/person.svg" alt="person" width="24" height="24">
                 </div>
                 <div class="input-wrapper">
-                    <input id="email" type="text" formControlEmail="email" placeholder="Email" required>
+                    <input id="email" type="text" formControlEmail="email" placeholder="Email">
+                    <div class="error" *ngIf="submitted && registerForm.get('email')?.invalid">
+                        Please enter a valid mail
+                    </div>
                     <img src="/assets/img/mail.svg" alt="mail">
                 </div>
                 <div class="input-wrapper">
-                    <input id="password" type="password" formControlPassword="password" placeholder="Password" required>
+                    <input id="password" type="password" formControlPassword="password" placeholder="Password">
+                    <div class="error" *ngIf="submitted && registerForm.get('password')?.invalid">
+                        Passwords do not match
+                    </div>
                     <img src="assets/img/lock.svg" alt="lock">
                 </div>
                 <div class="input-wrapper">
-                    <input id="passwordConfirmed" type="password" formControlPasswordRepeated="passwordRepeated" placeholder="Confirm Password" required>
+                    <input id="passwordConfirmed" type="password" formControlPasswordRepeated="passwordRepeated" placeholder="Confirm Password">
+                    <div class="error" *ngIf="submitted && registerForm.get('passwordConfirmed')?.invalid">
+                        You must accept the Privacy Policy
+                    </div>
                     <img src="assets/img/lock.svg" alt="lock">
                 </div>
             </div>

@@ -12,7 +12,7 @@ import { Task } from './models/task.model';
     CommonModule
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.sass'
+  styleUrl: './app.component.scss'
 })
 
 export class AppComponent implements OnInit {
@@ -21,29 +21,31 @@ export class AppComponent implements OnInit {
   tasks: Task[] = [];
 
   ngOnInit(): void {
-    this.loadTasks();
+    this.loadData('tasks');
   }
 
-  async loadTasks(){
-    const tasksCollection = collection(this.firestore, 'tasks');
+  async loadData(category: string){
+    const objectCollection = collection(this.firestore, category);
     try{
-      const snapshot = await getDocs(tasksCollection);
-      this.tasks = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data() as Task
-      }));
-      console.log('Tasks geladen (Firestore): ', this.tasks);
+      const snapshot = await getDocs(objectCollection);
+      if(category === 'tasks'){
+        this.tasks = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data() as Task
+        }));
+        console.log('Tasks geladen (Firestore): ', this.tasks);
+      }
     } catch(error){
       console.error('Fehler beim Laden der Tasks aus Firestore: ', error);
     }
   }
 
-  async addTask(task: Task){
-    const tasksCollection = collection(this.firestore, 'tasks');
+  async addTask(object: any, category: string){
+    let objectCollection = collection(this.firestore, category);
     try {
-      await addDoc(tasksCollection, task);
+      await addDoc(objectCollection, object);
       console.log('Task hinzugefügt');
-      this.loadTasks(); // Optional neu laden
+      this.loadData(category); // Optional neu laden
     } catch(error){
       console.error('Fehler beim Hinzufügen: ', error);
     }
