@@ -17,37 +17,40 @@
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-class">
                 <div class="input-wrapper">
-                    <input id="name" type="text" formControlName="name" placeholder="Name">
+                    <input id="name" type="text" formControlName="name" placeholder="Name" />
                     <div class="error" *ngIf="submitted && registerForm.get('name')?.invalid">
                         Please enter a valid email
                     </div>
                     <img src="assets/img/person.svg" alt="person" width="24" height="24">
                 </div>
                 <div class="input-wrapper">
-                    <input id="email" type="text" formControlEmail="email" placeholder="Email">
+                    <input id="email" type="text" formControlName="email" placeholder="Email" />
                     <div class="error" *ngIf="submitted && registerForm.get('email')?.invalid">
                         Please enter a valid mail
                     </div>
                     <img src="/assets/img/mail.svg" alt="mail">
                 </div>
                 <div class="input-wrapper">
-                    <input id="password" type="password" formControlPassword="password" placeholder="Password">
+                    <input id="password" type="password" formControlName="password" placeholder="Password" />
                     <div class="error" *ngIf="submitted && registerForm.get('password')?.invalid">
                         Passwords do not match
                     </div>
                     <img src="assets/img/lock.svg" alt="lock">
                 </div>
                 <div class="input-wrapper">
-                    <input id="passwordConfirmed" type="password" formControlPasswordRepeated="passwordRepeated" placeholder="Confirm Password">
+                    <input id="passwordConfirmed" type="password" formControlName="passwordConfirmed" placeholder="Confirm Password" />
                     <div class="error" *ngIf="submitted && registerForm.get('passwordConfirmed')?.invalid">
                         You must accept the Privacy Policy
                     </div>
                     <img src="assets/img/lock.svg" alt="lock">
                 </div>
             </div>
-            <div class="validate-form-wrapper">
-                <div class="checkbox"></div>
-                <span>I accept the <a href="#">Privacy Policy</a></span>
+            <div class="checkbox-wrapper">
+                <input type="checkbox" formControlName="acceptPrivacy" id="privacyCheck" />
+                <label for="privacyCheck">I accept the <a href="#">Privacy Policy</a></label>
+                <div class="error" *ngIf="submitted && registerForm.get('acceptPrivacy')?.invalid">
+                    You must accept the Privacy Policy                    
+                </div>
             </div>
             <div class="signUp-button">
                 <button>Sign up</button>

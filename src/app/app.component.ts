@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  async addTask(object: any, category: string){
+  async addDataToFirebase(object: any, category: string){
     let objectCollection = collection(this.firestore, category);
     try {
       await addDoc(objectCollection, object);

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterLink } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl, ValidationErrors, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidationErrors, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
+import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 
 @Component({
   selector: 'app-register',
@@ -39,10 +40,19 @@ export class RegisterComponent {
 
   onSubmit():void {
     this.submitted = true;
+    console.log('register form value: ', this.registerForm);
     if(this.registerForm.invalid){
+      console.log('Die Funktion wird abgebrochen, bevor sie komplett ausgeführt wird!');
       return;
     }
-    // Form valid - handle submission (e.g. send to API)
-    console.log(this.registerForm.value);
+    const {email, password} = this.registerForm.value // Mit Destructuring werden nur die Informationen email und password geholt
+    const auth = getAuth(); // Authentifizierungsinstanz wird aufgerufen. Innerhalb von auth stecken nun alle Registrierungs - und Loginmethoden, die ich implementieren kann.
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log('User registred: ', user.email);
+      }).catch((error) => {
+        console.error('Registration error: ', error.message);
+      })
   }
 }
