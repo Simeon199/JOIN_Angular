@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import { getAuth, signInWithEmailAndPassword, signInAnonymously } from 'firebase/auth';
+// import { getAuth, signInWithEmailAndPassword, signInAnonymously } from 'firebase/auth';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
   submitted = false;
   loginError: null | string = null;
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService , private router: Router){}
 
   ngOnInit():void {
     this.loginForm = this.formBuilder.group({
@@ -35,26 +36,47 @@ export class LoginComponent {
       return;
     }
     const {email, password} = this.loginForm.value;
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log('User logged in: ', user.email);
+    this.authService.login(email, password)
+      .then(user => {
+        console.log('Logged in: ', user.email);
+        this.router.navigate(['/summary']);
       })
-      .catch((error) => {
-        console.error('Login error: ', error.message);
+      .catch(error => {
+        console.error('Login failed: ', error.message);
         this.loginError = 'Invalid email or password';
-      })
+      });
+    // signInWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     const user = userCredential.user;
+    //     this.router.navigate(['/summary']);
+    //     console.log('User logged in: ', user.email);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Login error: ', error.message);
+    //     this.loginError = 'Invalid email or password';
+    //   })
   }
 
   guestLogin(){
-    const auth = getAuth();
-    signInAnonymously(auth)
-      .then((userCredential) => {
-        console.log('Guest user:', userCredential.user.uid);
+    this.authService.guestLogin()
+      .then(user => {
+        console.log('Guest login: ', user.uid);
+        this.router.navigate(['/summary']);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Guest login error: ', error.message);
       });
   }
+
+  // guestLogin(){
+  //   const auth = getAuth();
+  //   signInAnonymously(auth)
+  //     .then((userCredential) => {
+  //       console.log('Guest user:', userCredential.user.uid);
+  //       this.router.navigate(['/summary']);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Guest login error: ', error.message);
+  //     });
+  // }
 }
