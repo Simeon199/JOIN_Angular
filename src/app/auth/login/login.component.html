@@ -13,20 +13,26 @@
             <h2>Log in</h2>
             <div class="blue-line"></div>
         </div>
-        <form action="onsubmit">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-class">
                 <div class="input-wrapper">
-                    <input type="text" id="mail" placeholder="Email" required>
+                    <input id="mail" type="text" formControlName="email" placeholder="Email"/>
+                    <div class="error" *ngIf="submitted && loginForm.get('email')?.invalid">
+                        {{loginError}}
+                    </div>
                     <img src="assets/img/mail.svg" alt="mail">
                 </div>
                 <div class="input-wrapper">
-                    <input type="text" id="password" placeholder="Password" required>
+                    <input id="password" type="password" formControlName="password" placeholder="Password">
+                    <div class="error" *ngIf="submitted && loginForm.get('password')?.invalid">
+                        {{loginError}}
+                    </div>
                     <img src="assets/img/lock.svg" alt="lock">
                 </div>
             </div>
             <div class="login-buttons">
                 <button>Log in</button>
-                <button>Guest Log in</button>
+                <button type="button" (click)="guestLogin()">Guest Log in</button>
             </div>
         </form>
     </div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ValidationErrors, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 
@@ -14,6 +14,7 @@ import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
+
 export class RegisterComponent {
   registerForm!: FormGroup;
   submitted = false;
@@ -40,9 +41,7 @@ export class RegisterComponent {
 
   onSubmit():void {
     this.submitted = true;
-    console.log('register form value: ', this.registerForm);
     if(this.registerForm.invalid){
-      console.log('Die Funktion wird abgebrochen, bevor sie komplett ausgeführt wird!');
       return;
     }
     const {email, password} = this.registerForm.value // Mit Destructuring werden nur die Informationen email und password geholt
