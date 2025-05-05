@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-// import { getAuth, signInWithEmailAndPassword, signInAnonymously } from 'firebase/auth';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -45,16 +44,6 @@ export class LoginComponent {
         console.error('Login failed: ', error.message);
         this.loginError = 'Invalid email or password';
       });
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then((userCredential) => {
-    //     const user = userCredential.user;
-    //     this.router.navigate(['/summary']);
-    //     console.log('User logged in: ', user.email);
-    //   })
-    //   .catch((error) => {
-    //     console.error('Login error: ', error.message);
-    //     this.loginError = 'Invalid email or password';
-    //   })
   }
 
   guestLogin(){
@@ -67,16 +56,4 @@ export class LoginComponent {
         console.error('Guest login error: ', error.message);
       });
   }
-
-  // guestLogin(){
-  //   const auth = getAuth();
-  //   signInAnonymously(auth)
-  //     .then((userCredential) => {
-  //       console.log('Guest user:', userCredential.user.uid);
-  //       this.router.navigate(['/summary']);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Guest login error: ', error.message);
-  //     });
-  // }
 }

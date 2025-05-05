@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { FormBuilder, FormGroup, ValidationErrors, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
-import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +19,7 @@ export class RegisterComponent {
   registerForm!: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService){}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -44,14 +44,14 @@ export class RegisterComponent {
     if(this.registerForm.invalid){
       return;
     }
-    const {email, password} = this.registerForm.value // Mit Destructuring werden nur die Informationen email und password geholt
-    const auth = getAuth(); // Authentifizierungsinstanz wird aufgerufen. Innerhalb von auth stecken nun alle Registrierungs - und Loginmethoden, die ich implementieren kann.
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log('User registred: ', user.email);
-      }).catch((error) => {
-        console.error('Registration error: ', error.message);
+    const {email, password} = this.registerForm.value
+    this.authService.register(email, password)
+      .then(user => {
+        console.log('User registered successfully: ', user.email);
+        this.router.navigate(['/login']);
+      })
+      .catch(error => {
+        console.error('Registration failed: ', error.message);
       })
   }
 }
