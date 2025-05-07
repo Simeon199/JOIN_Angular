@@ -9,5 +9,55 @@ section {
     font-family: "Inter";
     font-size: 16px;
     font-weight: 400;
-    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    padding-top: 100px;
+    z-index: 10;
+}
+
+.logo-and-sidebar-links-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 24px;
+    width: 120px;
+}
+
+.sidebar-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    a {
+        color: white;
+    }
+}
+
+.legal-privacy-links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    a {
+        text-align: center;
+        color: #A8A8A8;
+
+        &:hover {
+            font-weight: bold;
+        }
+    }
 }
