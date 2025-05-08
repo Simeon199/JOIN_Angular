@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   imports: [
-    RouterLink,
     NgClass
   ],
   templateUrl: './sidebar.component.html',
@@ -13,15 +12,11 @@ import { NgClass } from '@angular/common';
 })
 
 export class SidebarComponent {
+
   currentLocation: string =  '';
 
   constructor(private router: Router){
     this.currentLocation = this.router.url;
-    this.returnCurrentLocation();
-  }
-
-  returnCurrentLocation(){
-    console.log('return current location: ', this.currentLocation);
   }
 
   highlightLink(path: string){
@@ -34,5 +29,9 @@ export class SidebarComponent {
 
   doesPathCoincide(path: string){
     return path === this.currentLocation;
+  }
+
+  routeToClickedSite(path: string){
+    this.router.navigate([path]);
   }
 }

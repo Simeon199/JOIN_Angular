@@ -4,44 +4,36 @@
             <img src="../../../assets/img/join_logo_white.svg" alt="join-logo">
         </div>
         <div class="sidebar-links">
-            <div class="sidebar-link-wrapper" [ngClass]="highlightLink('/summary') ? 'background-highlighting' : ''">
+            <div class="sidebar-link-wrapper" (click)="routeToClickedSite('/summary')" [ngClass]="highlightLink('/summary') ? 'background-highlighting' : ''">
                 <div class="sidebar-link">
                     <div class="image-container">
                         <img src="../../../assets/img/summary.svg" alt="summary-img">
                     </div>
-                    <div class="link-container">
-                        <a [routerLink]="['/summary']">Summary</a>
-                    </div>
+                    <span>Summary</span>
                 </div>
             </div>
-            <div class="sidebar-link-wrapper" [ngClass]="highlightLink('/add-task') ? 'background-highlighting' : ''">
+            <div class="sidebar-link-wrapper" (click)="routeToClickedSite('/add-task')" [ngClass]="highlightLink('/add-task') ? 'background-highlighting' : ''">
                 <div class="sidebar-link">
                     <div class="image-container">
                         <img src="../../../assets/img/edit_square.svg" alt="add-task-img">
                     </div>
-                    <div class="link-container">
-                        <a [routerLink]="['/add-task']">Add Task</a>
-                    </div>
+                    <span>Add Task</span>
                 </div>
             </div>
-            <div class="sidebar-link-wrapper" [ngClass]="highlightLink('/board') ? 'background-highlighting' : ''">
+            <div class="sidebar-link-wrapper" (click)="routeToClickedSite('/board')" [ngClass]="highlightLink('/board') ? 'background-highlighting' : ''">
                 <div class="sidebar-link">
                     <div class="image-container">
                         <img src="../../../assets/img/board.svg" alt="board-img">
                     </div>
-                    <div class="link-container">
-                        <a [routerLink]="['/board']">Board</a>
-                    </div>
+                    <span>Board</span>
                 </div>
             </div>
-            <div class="sidebar-link-wrapper" [ngClass]="highlightLink('/contact') ? 'background-highlighting' : ''">
+            <div class="sidebar-link-wrapper" (click)="routeToClickedSite('/contact')" [ngClass]="highlightLink('/contact') ? 'background-highlighting' : ''">
                 <div class="sidebar-link">
                     <div class="image-container">
                         <img src="../../../assets/img/perm_contact_calendar.svg" alt="contacts-img">
                     </div>
-                    <div class="link-container">
-                        <a [routerLink]="['/contact']">Contacts</a>
-                    </div>
+                    <span>Contacts</span>
                 </div>
             </div>
         </div>

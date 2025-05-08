@@ -3,7 +3,7 @@ section {
     left: 0;
     bottom: 0;
     top: 0;
-    width: 50%;
+    width: 100%;
     max-width: 320px;
     background: #2A3647;
     font-family: "Inter";
@@ -50,7 +50,8 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 320px;
+    max-width: 320px;
+    width: 100%;
     padding-top: 8px;
     padding-bottom: 8px;
 }
@@ -62,8 +63,9 @@ a {
     align-items: center;
     width: 120px;
     gap: 16px;
+    cursor: pointer;
 
-    a {
+    span {
         color: white;
     }
 }

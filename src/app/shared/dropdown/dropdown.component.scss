@@ -1,0 +1,22 @@
+section {
+    background: #2A3647;
+    position: absolute;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+ a {
+    font-family: 'Inter';
+    font-size: 16px;
+    font-weight: 400;
+    color: #CDCDCD;
+    text-decoration: none;
+    cursor: pointer;
+}
