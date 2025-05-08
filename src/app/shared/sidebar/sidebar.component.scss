@@ -51,6 +51,8 @@ a {
     justify-content: center;
     align-items: center;
     width: 320px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .sidebar-link {
@@ -79,4 +81,8 @@ a {
             font-weight: bold;
         }
     }
+}
+
+.background-highlighting {
+    background: #091931;
 }

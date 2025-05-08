@@ -4,7 +4,7 @@
             <img src="../../../assets/img/join_logo_white.svg" alt="join-logo">
         </div>
         <div class="sidebar-links">
-            <div class="sidebar-link-wrapper">
+            <div class="sidebar-link-wrapper" [ngClass]="highlightLink('/summary') ? 'background-highlighting' : ''">
                 <div class="sidebar-link">
                     <div class="image-container">
                         <img src="../../../assets/img/summary.svg" alt="summary-img">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sidebar-link-wrapper">
+            <div class="sidebar-link-wrapper" [ngClass]="highlightLink('/add-task') ? 'background-highlighting' : ''">
                 <div class="sidebar-link">
                     <div class="image-container">
                         <img src="../../../assets/img/edit_square.svg" alt="add-task-img">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sidebar-link-wrapper">
+            <div class="sidebar-link-wrapper" [ngClass]="highlightLink('/board') ? 'background-highlighting' : ''">
                 <div class="sidebar-link">
                     <div class="image-container">
                         <img src="../../../assets/img/board.svg" alt="board-img">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sidebar-link-wrapper">
+            <div class="sidebar-link-wrapper" [ngClass]="highlightLink('/contact') ? 'background-highlighting' : ''">
                 <div class="sidebar-link">
                     <div class="image-container">
                         <img src="../../../assets/img/perm_contact_calendar.svg" alt="contacts-img">
