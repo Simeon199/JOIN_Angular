@@ -1,0 +1,16 @@
+import { Component } from '@angular/core';
+import { SidebarComponent } from '../shared/sidebar/sidebar.component';
+import { HeaderComponent } from '../shared/header/header.component';
+
+@Component({
+  selector: 'app-contact',
+  imports: [
+    SidebarComponent,
+    HeaderComponent
+  ],
+  templateUrl: './contact.component.html',
+  styleUrl: './contact.component.scss'
+})
+export class ContactComponent {
+
+}
