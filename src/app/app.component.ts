@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Firestore, collection, getDocs, addDoc } from '@angular/fire/firestore';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { DropdownService } from './shared/services/dropdown.service';
 import { Task } from './models/task.model';
 
 @Component({
@@ -19,6 +20,14 @@ export class AppComponent implements OnInit {
   title = 'JOIN';
   private firestore = inject(Firestore);
   tasks: Task[] = [];
+
+  constructor(dropdownService: DropdownService, private router: Router){
+    router.events.subscribe(event => {
+      if(event instanceof NavigationEnd){
+        dropdownService.close()
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.loadData('tasks');
