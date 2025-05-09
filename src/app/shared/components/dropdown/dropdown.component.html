@@ -1,5 +1,5 @@
 <section *ngIf="isOpen()">
     <a [routerLink]="['/legal-notice']">Legal Notice</a>
     <a [routerLink]="['/privacy-policy']">Privacy Policy</a>
-    <a [routerLink]="['/login']">Log Out</a>
+    <a (click)="logoutUser()">Log Out</a>
 </section>

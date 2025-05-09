@@ -20,7 +20,11 @@ export class LoginComponent {
   submitted = false;
   loginError: null | string = null;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService , private router: Router){}
+  constructor(
+    private formBuilder: FormBuilder, 
+    private authService: AuthService , 
+    private router: Router
+  ){}
 
   ngOnInit():void {
     this.loginForm = this.formBuilder.group({
