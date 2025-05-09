@@ -12,7 +12,6 @@ export class DropdownService {
 
   toggle(){
     this._isOpen.update(value => !value);
-    console.log('_isOpen value: ', this._isOpen);
   }
 
   open(){
