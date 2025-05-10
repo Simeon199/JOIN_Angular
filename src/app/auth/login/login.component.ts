@@ -1,8 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+
+import { 
+  FormBuilder, 
+  FormGroup, 
+  ReactiveFormsModule, 
+  Validators
+} from '@angular/forms';
+
 import { AuthService } from '../auth.service';
+import {tap, catchError} from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
+
 
 @Component({
   selector: 'app-login',
@@ -39,25 +49,22 @@ export class LoginComponent {
       return;
     }
     const {email, password} = this.loginForm.value;
-    this.authService.login(email, password)
-      .then(user => {
-        console.log('Logged in: ', user.email);
-        this.router.navigate(['/summary']);
+    this.authService.login(email, password).pipe(
+      tap(() => this.router.navigate(['/summary'])),
+      catchError(error => {
+        console.error('Login error', error);
+        return EMPTY;
       })
-      .catch(error => {
-        console.error('Login failed: ', error.message);
-        this.loginError = 'Invalid email or password';
-      });
+    ).subscribe();
   }
 
   guestLogin(){
-    this.authService.guestLogin()
-      .then(user => {
-        console.log('Guest login: ', user.uid);
-        this.router.navigate(['/summary']);
+    this.authService.guestLogin().pipe(
+      tap(() => this.router.navigate(['/summary'])),
+      catchError(error => {
+        console.error('Guest Log in failed: ', error);
+        return EMPTY;
       })
-      .catch(error => {
-        console.error('Guest login error: ', error.message);
-      });
+    ).subscribe();
   }
 }

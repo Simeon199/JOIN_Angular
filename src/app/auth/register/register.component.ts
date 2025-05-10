@@ -1,8 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
-import { FormBuilder, FormGroup, ValidationErrors, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
+
+import { 
+  FormBuilder, 
+  FormGroup, 
+  ValidationErrors, 
+  ReactiveFormsModule, 
+  Validators, 
+  AbstractControl 
+} from '@angular/forms';
+
 import { AuthService } from '../auth.service';
+import {tap, catchError} from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -45,13 +56,11 @@ export class RegisterComponent {
       return;
     }
     const {email, password} = this.registerForm.value
-    this.authService.register(email, password)
-      .then(user => {
-        console.log('User registered successfully: ', user.email);
-        this.router.navigate(['/login']);
-      })
-      .catch(error => {
-        console.error('Registration failed: ', error.message);
-      })
+    this.authService.register(email, password).pipe(
+      tap(() => this.router.navigate(['/login'])),
+      catchError(error => {
+        console.error('Regisration failed: ', error);
+        return EMPTY;
+      })).subscribe();
   }
 }

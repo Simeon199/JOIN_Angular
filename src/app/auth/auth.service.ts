@@ -1,6 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInAnonymously, User, signOut } from 'firebase/auth';
+
+import { 
+  getAuth, 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword, 
+  signInAnonymously, 
+  UserCredential, 
+  User, 
+  signOut 
+} from 'firebase/auth';
+
+import {from, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,37 +19,22 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, si
 export class AuthService {
   private auth = getAuth();
 
-  constructor(private router: Router) { }
+  constructor() { }
 
-  login(email: string, password: string): Promise<User>{
-    return signInWithEmailAndPassword(this.auth, email, password)
-      .then((credential) => {
-        return credential.user;
-      });
+  login(email: string, password: string): Observable<UserCredential>{
+    return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
-  register(email: string, password: string): Promise<User>{
-    return createUserWithEmailAndPassword(this.auth, email, password)
-      .then((credential) => {
-        return credential.user
-      });
+  register(email: string, password: string): Observable<UserCredential>{
+    return from(createUserWithEmailAndPassword(this.auth, email, password));
   }
 
-  guestLogin():Promise<User>{
-    return signInAnonymously(this.auth)
-      .then((credential) => {
-        return credential.user;
-      });
+  guestLogin():Observable<UserCredential>{
+    return from(signInAnonymously(this.auth));
   }
 
-  logout(): Promise<void>{
-    return signOut(this.auth)
-      .then(() => {
-        console.log('Sign out successfull');
-        this.router.navigate(['/login']);
-      }).catch((error) => {
-        console.error('Sign Out unsuccessfull. Error happened: ', error.message);
-      });
+  logout(): Observable<void>{
+    return from(signOut(this.auth));
   }
 
   getCurrentUser(): User|null {

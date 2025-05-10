@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { DropdownService } from '../../services/dropdown.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../auth/auth.service';
+import {tap, catchError} from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-dropdown',
@@ -15,13 +17,20 @@ import { AuthService } from '../../../auth/auth.service';
 })
 export class DropdownComponent {
 
-  constructor(private authService: AuthService){}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ){}
 
   isOpen = inject(DropdownService).isOpen;
 
   logoutUser(){
-    this.authService.logout().catch(error => {
-      console.error('Logout failed: ', error);
-    });
+    this.authService.logout().pipe(
+      tap(() => this.router.navigate(['/login'])),
+      catchError((error) => {
+        console.error('Error on logout attempt: ', error);
+        return EMPTY;
+      })
+    ).subscribe();
   }
 }
