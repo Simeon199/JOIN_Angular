@@ -8,15 +8,20 @@ import { ContactComponent } from './contact/contact.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { HelpSectionComponent } from './help-section/help-section.component';
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'summary', component: SummaryComponent},
-    {path: 'add-task', component: AddTaskComponent},
-    {path: 'board', component: BoardComponent},
-    {path: 'contact', component: ContactComponent},
+
+    // Geschützte Routen mit Guard
+    {path: 'summary', component: SummaryComponent, canActivate: [authGuard]},
+    {path: 'add-task', component: AddTaskComponent, canActivate: [authGuard]},
+    {path: 'board', component: BoardComponent, canActivate: [authGuard]},
+    {path: 'contact', component: ContactComponent, canActivate: [authGuard]},
+
+    // Öffentlich zugängliche Seiten
     {path: 'privacy-policy', component: PrivacyPolicyComponent},
     {path: 'legal-notice', component: LegalNoticeComponent},
     {path: 'help-section', component: HelpSectionComponent}

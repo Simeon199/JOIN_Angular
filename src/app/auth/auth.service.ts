@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { 
   getAuth, 
@@ -7,7 +8,8 @@ import {
   signInAnonymously, 
   UserCredential, 
   User, 
-  signOut 
+  signOut,
+  onAuthStateChanged 
 } from 'firebase/auth';
 
 import {from, Observable} from 'rxjs';
@@ -19,7 +21,14 @@ import {from, Observable} from 'rxjs';
 export class AuthService {
   private auth = getAuth();
 
-  constructor() { }
+  private userSubject = new BehaviorSubject<User | null>(null);
+  user$ = this.userSubject.asObservable();
+
+  constructor() { 
+    onAuthStateChanged(this.auth, (user) => {
+      this.userSubject.next(user);
+    })
+  }
 
   login(email: string, password: string): Observable<UserCredential>{
     return from(signInWithEmailAndPassword(this.auth, email, password));
