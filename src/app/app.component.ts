@@ -5,7 +5,6 @@ import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { DropdownService } from './shared/services/dropdown.service';
 import { Task } from './models/task.model';
 import { AuthService } from './auth/auth.service';
-// import { onAuthStateChanged } from 'firebase/auth';
 
 @Component({
   selector: 'app-root',
