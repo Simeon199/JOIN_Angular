@@ -4,7 +4,7 @@ import { Firestore, collection, getDocs, addDoc } from '@angular/fire/firestore'
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { DropdownService } from './shared/services/dropdown.service';
 import { Task } from './models/task.model';
-// import { AuthService } from './auth/auth.service';
+import { AuthService } from './auth/auth.service';
 // import { onAuthStateChanged } from 'firebase/auth';
 
 @Component({
@@ -21,9 +21,12 @@ import { Task } from './models/task.model';
 export class AppComponent implements OnInit {
   title = 'JOIN';
   private firestore = inject(Firestore);
+  private authService = inject(AuthService);
   tasks: Task[] = [];
 
-  constructor(dropdownService: DropdownService, private router: Router){
+  constructor(
+    dropdownService: DropdownService,
+    private router: Router){
     router.events.subscribe(event => {
       if(event instanceof NavigationEnd){
         dropdownService.close()
@@ -32,16 +35,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadData('tasks');
+    this.authService.user$.subscribe((user) => {
+      if(user){
+        console.log('User is signed in: ', user.uid)
+      } else {
+        console.log('User is signed out');
+      }
+    })
   }
-
-  // onAuthStateChanged(this.authService.auth, (user) => {
-  //   if(user){
-  //     console.log('User is signed in: ', user.id);
-  //   } else {
-  //     console.log('User is signed out');
-  //   }
-  // });
 
   async loadData(category: string){
     const objectCollection = collection(this.firestore, category);
