@@ -1,0 +1,67 @@
+$breakpoints: (
+    screen320: 320px,
+    screen500: 500px,
+    screen850: 850px,
+    screen1024: 1024px,
+    screen1200: 1200px,
+    screen1350: 1350px,
+    screen1440: 1440px
+);
+
+/* --- Media Queries für Maximalbreiten --- */
+
+@mixin screen320 {
+    $value: map-get($breakpoints, $screen320);
+
+    @media only screen and (max-width: #{$value}){
+        @content;
+    }
+}
+
+@mixin screen500 {
+    $value: map-get($breakpoints, $screen500);
+
+    @media only screen and (max-width: #{$value}){
+        @content;
+    }
+}
+
+@mixin screen850 {
+    $value: map-get($breakpoints, $screen850);
+
+    @media only screen and (max-width: #{$value}){
+        @content;
+    }
+}
+
+@mixin screen1024 {
+    $value: map-get($breakpoints, $screen1024);
+
+    @media only screen and (max-width: #{$value}){
+        @content;
+    }
+}
+
+@mixin screen1200 {
+    $value: map-get($breakpoints, $screen1200);
+
+    @media only screen and (max-width: #{$value}){
+        @content;
+    }
+}
+
+@mixin screen1350 {
+    $value: map-get($breakpoints, $screen1350);
+
+    @media only screen and (max-width: #{$value}){
+        @content;
+    }
+}
+
+@mixin screen1440 {
+    $value: map-get($breakpoints, $screen1440);
+
+    @media only screen and (max-width: #{$value}){
+        @content;
+    }
+}
