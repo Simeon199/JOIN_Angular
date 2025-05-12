@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Inject } from '@angular/core';
+import { CommonModule, NgClass } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
+import { ResponsiveService } from '../../shared/services/responsive.service';
 
 import { 
   FormBuilder, 
@@ -26,9 +27,14 @@ import { EMPTY } from 'rxjs';
 })
 
 export class LoginComponent {
+
+  private responsiveService = Inject(ResponsiveService);
+  isSmallScreen$ = this.responsiveService.isSmallScreen$;
+
   loginForm!: FormGroup;
-  submitted = false;
   loginError: null | string = null;
+
+  submitted = false;
 
   constructor(
     private formBuilder: FormBuilder, 

@@ -36,7 +36,11 @@
             </div>
         </form>
     </div>
-    <div class="privacy-policy-and-legal-notice">
+    <div class="reference-to-register-mobile d-none">
+            <h2>Not a Join user?</h2>
+            <button [routerLink]="['/register']">Sign Up</button>
+        </div>  
+    <div class="privacy-policy-and-legal-notice" [ngClass]="isSmallScreen$ ? 'd-flex' : 'd-none'">
         <a [routerLink]="['/privacy-policy']">Privacy Policy</a>
         <a [routerLink]="['/legal-notice']">Legal Notice</a>
     </div>

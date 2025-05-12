@@ -181,9 +181,43 @@ form {
     }
 }
 
-// @include breakpoint.screen1350{
-//     .login-buttons {
-//         flex-direction: column;
-//         gap: 8px;
-//     }
-// }
+/* --- Media Queries ---*/
+
+@include breakpoint.screen1350{
+    .login-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .login-form-wrapper {
+        max-height: unset;
+        height: unset;
+        padding: 32px;
+    }
+}
+
+@include breakpoint.screen1200 {
+    .form-class {
+        width: 100%;
+    }
+}
+
+@include breakpoint.screen850 {
+    .login-form-wrapper {
+        max-width: unset;
+        padding: 24px;
+        width: 70%;
+    }
+}
+
+@include breakpoint.screen600 {
+    .login-form-wrapper {
+        width: 90%;
+    }
+}
+
+@include breakpoint.screen400 {
+    .login-buttons {
+        width: 75%;
+    }
+}
