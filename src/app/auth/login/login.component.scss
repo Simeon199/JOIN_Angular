@@ -3,8 +3,10 @@
 section {
     position: absolute;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 40px;
     top: 0;
     bottom: 0;
     right: 0;
@@ -27,10 +29,7 @@ section {
     }
 }
 
-.reference-to-register {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.reference-to-register, .reference-to-register-mobile {
     gap: 24px;
     padding-top: 16px;
     padding-right: 16px;
