@@ -3,7 +3,7 @@
         <div class="join-logo">
             <img src="assets/img/capa2.svg" alt="join-logo">
         </div>
-        <div class="reference-to-register" [ngClass]="isSmall ? 'd-none' : 'd-flex'">
+        <div class="reference-to-register" [ngClass]="isScreenSizeBig() ? 'd-flex' : 'd-none'">
             <h2>Not a Join user?</h2>
             <button [routerLink]="['/register']">Sign Up</button>
         </div>  
@@ -36,7 +36,7 @@
             </div>
         </form>
     </div>
-    <div class="reference-to-register-mobile" [ngClass]="isSmall ? 'd-flex' : 'd-none'">
+    <div class="reference-to-register-mobile" [ngClass]="isScreenSizeSmall() ? 'd-flex' : 'd-none'">
             <h2>Not a Join user?</h2>
             <button [routerLink]="['/register']">Sign Up</button>
     </div>  

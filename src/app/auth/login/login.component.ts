@@ -43,8 +43,8 @@ export class LoginComponent {
 
   // All remaining global defined flags
 
-  screenSize: string = '1440';
-  isSmall:boolean = false;
+  screenSize: number = 0;
+  isSmall: boolean = false;
 
   constructor(){}
 
@@ -53,12 +53,17 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-
-    this.responsiveService.isSmallScreen$.subscribe((isSmall: boolean) => {
-      // this.screenSize = screenSize;
-      this.isSmall = isSmall;
-      console.log('screen size: ', isSmall);
+    this.responsiveService.screenWidth$.subscribe(width => {
+      this.screenSize = width;
     })
+  }
+
+  isScreenSizeSmall(){
+    return this.screenSize < 600; 
+  }
+
+  isScreenSizeBig(){
+    return !this.isScreenSizeSmall();
   }
 
   onSubmit(){
