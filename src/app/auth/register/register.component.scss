@@ -148,20 +148,32 @@ form {
     font-weight: 400;
     font-size: 16px;
 
-    input {
+    input[type="checkbox"]{
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
         width: 16px;
         height: 16px;
+        border: 2px solid black;
+        border-radius: 3px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
 
         &:hover {
             background-color: #EDF2FA;
             cursor: pointer;
         }
-    }
 
-    a {
-        text-decoration: none;
-        color: #29ABE2;
+        &:checked {
+            background-image: url('../../../assets/img/checking-sign.svg');
+        }
     }
+}
+
+a {
+    text-decoration: none;
+    color: #29ABE2;
 }
 
 .privacy-policy-and-legal-notice {
@@ -181,6 +193,7 @@ form {
 
         &:hover {
             font-weight: 700;
+            color: #29ABE2;
         }
     }
 }
