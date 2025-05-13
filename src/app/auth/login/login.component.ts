@@ -45,6 +45,7 @@ export class LoginComponent {
 
   screenSize: number = 0;
   isSmall: boolean = false;
+  isPasswordVisible : boolean = false;
 
   constructor(){}
 
@@ -64,6 +65,10 @@ export class LoginComponent {
 
   isScreenSizeBig(){
     return !this.isScreenSizeSmall();
+  }
+
+  togglePasswordVisibility(){
+    this.isPasswordVisible = !this.isPasswordVisible;
   }
 
   onSubmit(){

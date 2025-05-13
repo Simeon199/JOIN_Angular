@@ -28,9 +28,17 @@ import { EMPTY } from 'rxjs';
 
 export class RegisterComponent {
   registerForm!: FormGroup;
+
+  isFirstPasswordVisible : boolean = false;
+  isSecondPasswordVisible : boolean = false;
+
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService){}
+  constructor(
+    private formBuilder: FormBuilder, 
+    private router: Router, 
+    private authService: AuthService
+  ){}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -62,5 +70,13 @@ export class RegisterComponent {
         console.error('Regisration failed: ', error);
         return EMPTY;
       })).subscribe();
+  }
+
+  togglePasswordVisibility(passwordInput:string){
+    if(passwordInput === 'firstPassword'){
+      this.isFirstPasswordVisible = !this.isFirstPasswordVisible;
+    } else if(passwordInput === 'secondPassword'){
+      this.isSecondPasswordVisible = !this.isSecondPasswordVisible;
+    }
   }
 }

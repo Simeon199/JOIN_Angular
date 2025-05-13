@@ -31,18 +31,18 @@
                     <img src="/assets/img/mail.svg" alt="mail">
                 </div>
                 <div class="input-wrapper">
-                    <input id="password" type="password" formControlName="password" placeholder="Password" />
+                    <input id="password" [type]="isFirstPasswordVisible ? 'text' : 'password'" formControlName="password" placeholder="Password" />
                     <div class="error" *ngIf="submitted && registerForm.get('password')?.invalid">
                         Passwords do not match
                     </div>
-                    <img src="assets/img/lock.svg" alt="lock">
+                    <img [src]="isFirstPasswordVisible ? 'assets/img/visibility.svg' : 'assets/img/lock.svg'" (click)="togglePasswordVisibility('firstPassword')" alt="lock">
                 </div>
                 <div class="input-wrapper">
-                    <input id="passwordConfirmed" type="password" formControlName="passwordConfirmed" placeholder="Confirm Password" />
+                    <input id="passwordConfirmed" [type]="isSecondPasswordVisible ? 'text' : 'password'" formControlName="passwordConfirmed" placeholder="Confirm Password" />
                     <div class="error" *ngIf="submitted && registerForm.get('passwordConfirmed')?.invalid">
                         You must accept the Privacy Policy
                     </div>
-                    <img src="assets/img/lock.svg" alt="lock">
+                    <img [src]="isSecondPasswordVisible ? 'assets/img/visibility.svg' : 'assets/img/lock.svg'" (click)="togglePasswordVisibility('secondPassword')" alt="lock">
                 </div>
             </div>
             <div class="checkbox-wrapper">

@@ -23,11 +23,11 @@
                     <img src="assets/img/mail.svg" alt="mail">
                 </div>
                 <div class="input-wrapper">
-                    <input id="password" type="password" formControlName="password" placeholder="Password">
+                    <input id="password" [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password" placeholder="Password">
                     <div class="error" *ngIf="submitted && loginForm.get('password')?.invalid">
                         {{loginError}}
                     </div>
-                    <img src="assets/img/lock.svg" alt="lock">
+                    <img [src]="isPasswordVisible ? 'assets/img/visibility.svg' : 'assets/img/lock.svg'" alt="lock" (click)="togglePasswordVisibility()">
                 </div>
             </div>
             <div class="login-buttons">
