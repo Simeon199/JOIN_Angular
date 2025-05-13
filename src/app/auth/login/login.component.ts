@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule, NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterLink, Router } from '@angular/router';
 import { ResponsiveService } from '../../shared/services/responsive.service';
 
