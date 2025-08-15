@@ -1,3 +1,25 @@
 <section>
     <h1>Add Task</h1>
+    <form [formGroup]="addTaskForm">
+        <label for="title">Title: </label>
+        <input id="title" type="text" formControlName="title">
+
+        <label for="description">Description: </label>
+        <input id="description" type="text" formControlName="description">
+
+        <label for="assignedTo">Assigned To: </label>
+        <input id="assignedTo" type="text" formControlName="assignedTo">
+
+        <label for="date">Date: </label>
+        <input id="date" type="text" formControlName="date">
+
+        <label for="prio">Priority: </label>
+        <input id="prio" type="text" formControlName="prio">
+
+        <label for="category">Category: </label>
+        <input id="category" type="text" formControlName="category">
+
+        <label for="subtasks">Subtasks: </label>
+        <input id="subtasks" type="text" formControlName="subtasks">
+    </form>
 </section>
