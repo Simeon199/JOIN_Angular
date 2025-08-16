@@ -1,25 +1,46 @@
 <section>
     <h1>Add Task</h1>
     <form [formGroup]="addTaskForm">
-        <label for="title">Title: </label>
-        <input id="title" type="text" formControlName="title">
+        <div class="formBlock">
+            <div class="form-element">
+                <label for="title">Title: </label>
+                <input id="title" type="text" placeholder="Enter a title" formControlName="title">
+            </div>
+            <div class="form-element">
+                <label for="description">Description: </label>
+                <input id="description" type="text" placeholder="Enter a Description" formControlName="description">
+            </div>
 
-        <label for="description">Description: </label>
-        <input id="description" type="text" formControlName="description">
+            <div class="form-element">
+                <label for="date">Date: </label>
+                <input id="date" type="text" formControlName="date">
+            </div>
 
-        <label for="assignedTo">Assigned To: </label>
-        <input id="assignedTo" type="text" formControlName="assignedTo">
+        </div>
 
-        <label for="date">Date: </label>
-        <input id="date" type="text" formControlName="date">
+        <div class="parting-line"></div>
 
-        <label for="prio">Priority: </label>
-        <input id="prio" type="text" formControlName="prio">
+        <div class="formBlock">
+            <div class="form-element">
+                <label for="prio">Priority: </label>
+                <input id="prio" type="text" formControlName="prio">
+            </div>
 
-        <label for="category">Category: </label>
-        <input id="category" type="text" formControlName="category">
+            <div class="form-element">
+                <label for="assignedTo">Assigned To: </label>
+                <input id="assignedTo" type="text" formControlName="assignedTo">
+            </div>
+            
+            <div class="form-element">
+                <label for="category">Category: </label>
+                <input id="category" type="text" formControlName="category">
+            </div>
 
-        <label for="subtasks">Subtasks: </label>
-        <input id="subtasks" type="text" formControlName="subtasks">
+            <div class="form-element">
+                <label for="subtasks">Subtasks: </label>
+                <input id="subtasks" type="text" placeholder="Add new subtask" formControlName="subtasks">
+            </div>
+
+        </div>
     </form>
 </section>
