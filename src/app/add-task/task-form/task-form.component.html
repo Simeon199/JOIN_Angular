@@ -23,20 +23,45 @@
         <div class="formBlock">
             <div class="form-element">
                 <label for="prio">Priority: </label>
-                <input id="prio" type="text" list="task-categories" placeholder="Select task category" formControlName="prio">
-                <datalist id="task-categories">
-                    <option value="Technical Task"></option>
-                    <option value="User Story"></option>
-                </datalist>
+                <div class="custom-dropdown-wrapper">
+                    <input 
+                        [value]="selectedTaskCategory"
+                        (focus)="showTaskCategoryDropdown = true"
+                        (blur)="hideTaskCategoryDropdown()"
+                        [style.width.%]="100"
+                        id="prio" 
+                        type="text" 
+                        placeholder="Select task category" 
+                        formControlName="prio"
+                    >
+                    <ul *ngIf="showTaskCategoryDropdown" class="custom-dropdown">
+                        <li *ngFor="let taskCategory of taskCategories" (mousedown)="selectTaskCategory(taskCategory)">
+                            {{taskCategory}}
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="form-element">
                 <label for="assignedTo">Assigned To: </label>
-                <input id="assignedTo" type="text" list="contacts-to-be-assigned" placeholder="Select contacts to assign" formControlName="assignedTo">
-                <datalist id="contacts-to-be-assigned">
-                    <option value="Mark">Mark</option>
-                    <option value="Anton">Anton</option>
-                </datalist>
+                <div class="custom-dropdown-wrapper">
+                    <input 
+                        [value]="selectedContact"
+                        (input) = "onInput($event)"
+                        (focus)="showContactsDropdown = true"
+                        (blur)="hideContactsDropdown()"
+                        [style.width.%] = "100"
+                        id="assignedTo" 
+                        type="text" 
+                        placeholder="Select contacts to assign" 
+                        formControlName="assignedTo"
+                    >
+                    <ul *ngIf="showContactsDropdown" class="custom-dropdown" [style.width.%]="100">
+                        <li *ngFor="let contact of contacts" (mousedown)="selectContact(contact)">
+                            {{contact}}
+                        </li>
+                    </ul>
+                </div>
             </div>
             
             <div class="form-element">
