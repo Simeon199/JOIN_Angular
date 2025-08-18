@@ -106,6 +106,30 @@ section {
         }
     }
 
+    .input-image-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #D1D1D1;
+        border-radius: 10px;
+        background: #FFFFFF;
+        border-radius: 10px;
+        padding-right: 16px;
+        padding-left: 16px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        cursor: pointer;
+
+        input {
+            border: none;
+            padding-right: unset;
+            padding-left: unset;
+            padding-top: unset;
+            padding-bottom: unset;
+        }
+    }
+
     .formBlock {
         display: flex;
         flex-direction: column;
