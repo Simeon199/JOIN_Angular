@@ -90,7 +90,7 @@ section {
         gap: clamp(8px, 10%, 64px);
 
         input {
-            background: #FFFFFF;
+            // background: #FFFFFF;
             border: 1px solid #D1D1D1;
             padding-top: 12px;
             padding-right: 16px;
@@ -157,5 +157,24 @@ section {
     .parting-line {
         border: 1px solid #D1D1D1;
         background-color: #D1D1D1;
+    }
+
+    .white {
+        background: white;
+    }
+
+    .orange {
+        background: #FFA800;
+        color: white;
+    }
+
+    .red {
+        background: #FF3D00;
+        color: white;
+    }
+
+    .green {
+        background: #7AE229;
+        color: white;
     }
 }

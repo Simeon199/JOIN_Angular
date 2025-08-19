@@ -18,6 +18,9 @@ export class TaskFormComponent {
   contacts:Array<string> = ['Mark', 'Anton'];
   taskCategories:Array<string> = ['Technical Task', 'User Story'];
   filteredContacts = this.contacts;
+  selectedUrgencyIcon:string = 'medium'; 
+  colorClass:string = 'white';
+  default:string = 'white';
 
   addTaskForm = new FormGroup({
     title: new FormControl(''),
@@ -34,6 +37,12 @@ export class TaskFormComponent {
     this.filteredContacts = this.contacts.filter(contact => 
       contact.toLowerCase().includes(value.toLowerCase())
     );
+  }
+
+  selectUrgencyIcon(urgencyStatus:string, colorClass:string){
+    this.selectedUrgencyIcon = urgencyStatus;
+    this.colorClass = colorClass;
+    console.log(this.selectedUrgencyIcon);
   }
 
   selectContact(contact: string){

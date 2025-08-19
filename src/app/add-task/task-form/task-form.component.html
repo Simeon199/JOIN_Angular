@@ -67,17 +67,29 @@
             <div class="form-element">
                 <label for="category">Category: </label>
                 <div class="form-category">
-                    <div class="input-image-wrapper">
-                        <input id="category-urgent" type="button" value="Urgent">
-                        <img src="assets/img/prio_urgent_white.svg" alt="urgent-icon">
+                    <div class="input-image-wrapper" (click)="selectUrgencyIcon('urgent', 'red')" [class]="selectedUrgencyIcon === 'urgent' ? colorClass : default">
+                        <input id="category-urgent" type="button" value="Urgent" [class]="selectedUrgencyIcon === 'urgent' ? colorClass : default">
+                        @if(selectedUrgencyIcon !== 'urgent'){
+                            <img src="assets/img/prio_urgent_symbole.svg" alt="urgent-red">
+                        } @else if(selectedUrgencyIcon === 'urgent'){
+                            <img src="assets/img/prio_urgent_white.svg" alt="urgent-icon">
+                        } 
                     </div>
-                    <div class="input-image-wrapper">
-                        <input id="category-medium" type="button" value="Medium">
-                        <img src="assets/img/medium.svg" alt="medium-icon">
+                    <div class="input-image-wrapper" (click)="selectUrgencyIcon('medium', 'orange')" [class]="selectedUrgencyIcon === 'medium' ? colorClass : default">
+                        <input id="category-medium" type="button" value="Medium" [class]="selectedUrgencyIcon === 'medium' ? colorClass : default">
+                        @if(selectedUrgencyIcon !== 'medium'){
+                            <img src="assets/img/medium.svg" alt="medium-icon">
+                        } @else if(selectedUrgencyIcon === 'medium'){
+                            <img src="assets/img/prio_medium_white.svg" alt="medium-white">
+                        }
                     </div>
-                    <div class="input-image-wrapper">
-                        <input id="category-low" type="button" value="Low">
-                        <img src="assets/img/prio_low.svg" alt="low-icon">
+                    <div class="input-image-wrapper" (click)="selectUrgencyIcon('low', 'green')" [class]="selectedUrgencyIcon === 'low' ? colorClass : default">
+                        <input id="category-low" type="button" value="Low" [class]="selectedUrgencyIcon === 'low' ? colorClass : default">
+                        @if(selectedUrgencyIcon !== 'low'){
+                            <img src="assets/img/prio_low_symbole.svg" alt="low-green">
+                        } @else if(selectedUrgencyIcon === 'low'){
+                            <img src="assets/img/prio_low.svg" alt="low-icon">
+                        }
                     </div>
                 </div>
             </div>
