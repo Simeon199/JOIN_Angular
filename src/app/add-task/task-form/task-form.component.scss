@@ -57,6 +57,13 @@ section {
         bottom: 40px;
         right: 32px;
 
+        button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+
         button:nth-child(1){
             font-size: 20px;
             font-weight: 400;
@@ -90,7 +97,6 @@ section {
         gap: clamp(8px, 10%, 64px);
 
         input {
-            // background: #FFFFFF;
             border: 1px solid #D1D1D1;
             padding-top: 12px;
             padding-right: 16px;
@@ -160,7 +166,7 @@ section {
     }
 
     .white {
-        background: white;
+        background: #FFFFFF;
     }
 
     .orange {

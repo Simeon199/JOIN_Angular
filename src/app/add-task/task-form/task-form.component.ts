@@ -19,7 +19,7 @@ export class TaskFormComponent {
   taskCategories:Array<string> = ['Technical Task', 'User Story'];
   filteredContacts = this.contacts;
   selectedUrgencyIcon:string = 'medium'; 
-  colorClass:string = 'white';
+  colorClass:string = 'orange';
   default:string = 'white';
 
   addTaskForm = new FormGroup({
