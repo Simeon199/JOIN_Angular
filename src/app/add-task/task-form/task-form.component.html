@@ -27,15 +27,18 @@
                     <div class="input-with-image">
                         <input 
                             [value]="selectedTaskCategory"
-                            (focus)="showTaskCategoryDropdown = true"
-                            (blur)="hideTaskCategoryDropdown()"
+                            (click)="invertStatusDropdownArray('taskCategoryInput')"
                             [style.width.%]="100"
                             id="prio" 
                             type="text" 
                             placeholder="Select task category" 
                             formControlName="prio"
                         >
-                        <img src="assets/img/arrow_drop_down.svg" alt="arrow_drop_down">
+                        @if(this.statusTaskCategoryDropdownArrowDown){
+                            <img src="assets/img/arrow_drop_down.svg" alt="arrow_drop_down" (click)="invertStatusDropdownArray('taskCategoryInput')">
+                        } @else if(!this.statusTaskCategoryDropdownArrowDown){
+                            <img src="assets/img/arrow_drop_top.svg" alt="arrow_drop_top" (click)="invertStatusDropdownArray('taskCategoryInput')">
+                        }
                     </div>
                     <ul *ngIf="showTaskCategoryDropdown" class="custom-dropdown">
                         <li *ngFor="let taskCategory of taskCategories" (mousedown)="selectTaskCategory(taskCategory)">
@@ -52,15 +55,18 @@
                         <input 
                             [value]="selectedContact"
                             (input) = "onInput($event)"
-                            (focus)="showContactsDropdown = true"
-                            (blur)="hideContactsDropdown()"
+                            (click) = "invertStatusDropdownArray('contactInput')"
                             [style.width.%] = "100"
                             id="assignedTo" 
                             type="text" 
                             placeholder="Select contacts to assign" 
                             formControlName="assignedTo"
                         >
-                        <img src="assets/img/arrow_drop_down.svg" alt="arrow_drop_down">
+                        @if(statusContactsDropdownArrowDown){
+                            <img src="assets/img/arrow_drop_down.svg" alt="arrow_drop_down" (click)="invertStatusDropdownArray('contactInput')">
+                        } @else if(!statusContactsDropdownArrowDown){
+                            <img src="assets/img/arrow_drop_top.svg" alt="arrow_drop_top" (click)="invertStatusDropdownArray('contactInput')">
+                        }
                     </div>
                     <ul *ngIf="showContactsDropdown" class="custom-dropdown" [style.width.%]="100">
                         <li *ngFor="let contact of contacts" (mousedown)="selectContact(contact)">

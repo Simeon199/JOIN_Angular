@@ -54,6 +54,11 @@ a {
     width: 100%;
     padding-top: 8px;
     padding-bottom: 8px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(128, 128, 128, 0.4);
+    }
 }
 
 .sidebar-link {

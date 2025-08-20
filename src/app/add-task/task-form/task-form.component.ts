@@ -21,6 +21,8 @@ export class TaskFormComponent {
   selectedUrgencyIcon:string = 'medium'; 
   colorClass:string = 'orange';
   default:string = 'white';
+  statusTaskCategoryDropdownArrowDown:boolean = true;
+  statusContactsDropdownArrowDown:boolean = true;  
 
   addTaskForm = new FormGroup({
     title: new FormControl(''),
@@ -39,10 +41,37 @@ export class TaskFormComponent {
     );
   }
 
+  invertStatusDropdownArray(input:string){
+    if(input === 'contactInput'){
+      this.statusContactsDropdownArrowDown = !this.statusContactsDropdownArrowDown;
+      this.checkContactsDropdown();
+    } else if(input === 'taskCategoryInput'){
+      this.statusTaskCategoryDropdownArrowDown = !this.statusTaskCategoryDropdownArrowDown;
+      this.checkTaskCategoryDropdown();
+    }
+  }
+
+  checkTaskCategoryDropdown(){
+    if(this.statusTaskCategoryDropdownArrowDown){
+      this.hideTaskCategoryDropdown();
+    } else if(!this.statusTaskCategoryDropdownArrowDown) {
+      this.showTaskCategoryDropdown = true;
+    }
+    return ;
+  }
+
+  checkContactsDropdown(){
+    if(this.statusContactsDropdownArrowDown){
+      this.hideContactsDropdown();
+    } else if(!this.statusContactsDropdownArrowDown) {
+      this.showContactsDropdown = true;
+    }
+    return ;
+  }
+
   selectUrgencyIcon(urgencyStatus:string, colorClass:string){
     this.selectedUrgencyIcon = urgencyStatus;
     this.colorClass = colorClass;
-    console.log(this.selectedUrgencyIcon);
   }
 
   selectContact(contact: string){
