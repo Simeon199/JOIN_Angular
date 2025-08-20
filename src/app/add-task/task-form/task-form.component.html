@@ -24,16 +24,19 @@
             <div class="form-element">
                 <label for="prio">Priority: </label>
                 <div class="custom-dropdown-wrapper">
-                    <input 
-                        [value]="selectedTaskCategory"
-                        (focus)="showTaskCategoryDropdown = true"
-                        (blur)="hideTaskCategoryDropdown()"
-                        [style.width.%]="100"
-                        id="prio" 
-                        type="text" 
-                        placeholder="Select task category" 
-                        formControlName="prio"
-                    >
+                    <div class="input-with-image">
+                        <input 
+                            [value]="selectedTaskCategory"
+                            (focus)="showTaskCategoryDropdown = true"
+                            (blur)="hideTaskCategoryDropdown()"
+                            [style.width.%]="100"
+                            id="prio" 
+                            type="text" 
+                            placeholder="Select task category" 
+                            formControlName="prio"
+                        >
+                        <img src="assets/img/arrow_drop_down.svg" alt="arrow_drop_down">
+                    </div>
                     <ul *ngIf="showTaskCategoryDropdown" class="custom-dropdown">
                         <li *ngFor="let taskCategory of taskCategories" (mousedown)="selectTaskCategory(taskCategory)">
                             {{taskCategory}}
@@ -45,17 +48,20 @@
             <div class="form-element">
                 <label for="assignedTo">Assigned To: </label>
                 <div class="custom-dropdown-wrapper">
-                    <input 
-                        [value]="selectedContact"
-                        (input) = "onInput($event)"
-                        (focus)="showContactsDropdown = true"
-                        (blur)="hideContactsDropdown()"
-                        [style.width.%] = "100"
-                        id="assignedTo" 
-                        type="text" 
-                        placeholder="Select contacts to assign" 
-                        formControlName="assignedTo"
-                    >
+                    <div class="input-with-image">
+                        <input 
+                            [value]="selectedContact"
+                            (input) = "onInput($event)"
+                            (focus)="showContactsDropdown = true"
+                            (blur)="hideContactsDropdown()"
+                            [style.width.%] = "100"
+                            id="assignedTo" 
+                            type="text" 
+                            placeholder="Select contacts to assign" 
+                            formControlName="assignedTo"
+                        >
+                        <img src="assets/img/arrow_drop_down.svg" alt="arrow_drop_down">
+                    </div>
                     <ul *ngIf="showContactsDropdown" class="custom-dropdown" [style.width.%]="100">
                         <li *ngFor="let contact of contacts" (mousedown)="selectContact(contact)">
                             {{contact}}
@@ -96,7 +102,10 @@
 
             <div class="form-element">
                 <label for="subtasks">Subtasks: </label>
-                <input id="subtasks" type="text" placeholder="Add new subtask" formControlName="subtasks">
+                <div class="input-with-image">
+                    <input id="subtasks" type="text" placeholder="Add new subtask" formControlName="subtasks">
+                    <img src="assets/img/plus.svg" alt="plus-icon">
+                </div>
             </div>
 
         </div>
