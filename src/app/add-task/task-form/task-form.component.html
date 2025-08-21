@@ -1,4 +1,4 @@
-<section>
+<section (click)="hideDropdownsIfOpen($event)">
     <h1>Add Task</h1>
     <form [formGroup]="addTaskForm">
         <div class="formBlock">
@@ -24,38 +24,35 @@
             <div class="form-element">
                 <label for="prio">Priority: </label>
                 <div class="custom-dropdown-wrapper">
-                    <div class="input-with-image">
+                    <div id="priority-input-div" class="input-with-image" (click)="invertStatusDropdownArray('taskCategoryInput', $event)">
                         <input 
                             [value]="selectedTaskCategory"
-                            (click)="invertStatusDropdownArray('taskCategoryInput')"
-                            [style.width.%]="100"
                             id="prio" 
                             type="text" 
                             placeholder="Select task category" 
                             formControlName="prio"
                         >
                         @if(this.statusTaskCategoryDropdownArrowDown){
-                            <img src="assets/img/arrow_drop_down.svg" alt="arrow_drop_down" (click)="invertStatusDropdownArray('taskCategoryInput')">
+                            <img src="assets/img/arrow_drop_down.svg" alt="arrow_drop_down">
                         } @else if(!this.statusTaskCategoryDropdownArrowDown){
-                            <img src="assets/img/arrow_drop_top.svg" alt="arrow_drop_top" (click)="invertStatusDropdownArray('taskCategoryInput')">
+                            <img src="assets/img/arrow_drop_top.svg" alt="arrow_drop_top">
+                            <ul class="custom-dropdown">
+                                <li *ngFor="let taskCategory of taskCategories" (mousedown)="selectTaskCategory(taskCategory)">
+                                    {{taskCategory}}
+                                </li>
+                            </ul>
                         }
                     </div>
-                    <ul *ngIf="showTaskCategoryDropdown" class="custom-dropdown">
-                        <li *ngFor="let taskCategory of taskCategories" (mousedown)="selectTaskCategory(taskCategory)">
-                            {{taskCategory}}
-                        </li>
-                    </ul>
                 </div>
             </div>
 
             <div class="form-element">
                 <label for="assignedTo">Assigned To: </label>
                 <div class="custom-dropdown-wrapper">
-                    <div class="input-with-image">
+                    <div class="input-with-image" id="contact-input-div" (click)="invertStatusDropdownArray('contactInput', $event)">
                         <input 
                             [value]="selectedContact"
                             (input) = "onInput($event)"
-                            (click) = "invertStatusDropdownArray('contactInput')"
                             [style.width.%] = "100"
                             id="assignedTo" 
                             type="text" 
@@ -63,16 +60,16 @@
                             formControlName="assignedTo"
                         >
                         @if(statusContactsDropdownArrowDown){
-                            <img src="assets/img/arrow_drop_down.svg" alt="arrow_drop_down" (click)="invertStatusDropdownArray('contactInput')">
+                            <img src="assets/img/arrow_drop_down.svg" alt="arrow_drop_down">
                         } @else if(!statusContactsDropdownArrowDown){
-                            <img src="assets/img/arrow_drop_top.svg" alt="arrow_drop_top" (click)="invertStatusDropdownArray('contactInput')">
+                            <img src="assets/img/arrow_drop_top.svg" alt="arrow_drop_top">
+                            <ul class="custom-dropdown">
+                                <li *ngFor="let contact of contacts" (mousedown)="selectContact(contact)">
+                                    {{contact}}
+                                </li>
+                            </ul>                        
                         }
                     </div>
-                    <ul *ngIf="showContactsDropdown" class="custom-dropdown" [style.width.%]="100">
-                        <li *ngFor="let contact of contacts" (mousedown)="selectContact(contact)">
-                            {{contact}}
-                        </li>
-                    </ul>
                 </div>
             </div>
             

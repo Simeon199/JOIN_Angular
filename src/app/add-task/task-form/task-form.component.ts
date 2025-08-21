@@ -41,7 +41,24 @@ export class TaskFormComponent {
     );
   }
 
-  invertStatusDropdownArray(input:string){
+  stopPropagation(event: Event){
+    event.stopPropagation();
+  }
+
+  hideDropdownsIfOpen(event: Event){
+    let contactInputDiv = document.getElementById('contact-input-div'); 
+    let priorityInputDiv = document.getElementById('priority-input-div');
+    let target = event.target;
+    if(this.showContactsDropdown && target !== contactInputDiv){
+      this.hideContactsDropdown();
+      this.statusContactsDropdownArrowDown = true;
+    } else if(this.showTaskCategoryDropdown && target !== priorityInputDiv){
+      this.hideTaskCategoryDropdown();
+      this.statusTaskCategoryDropdownArrowDown = true;
+    }
+  }
+
+  invertStatusDropdownArray(input:string, event:Event){
     if(input === 'contactInput'){
       this.statusContactsDropdownArrowDown = !this.statusContactsDropdownArrowDown;
       this.checkContactsDropdown();
@@ -49,6 +66,7 @@ export class TaskFormComponent {
       this.statusTaskCategoryDropdownArrowDown = !this.statusTaskCategoryDropdownArrowDown;
       this.checkTaskCategoryDropdown();
     }
+    this.stopPropagation(event);
   }
 
   checkTaskCategoryDropdown(){
@@ -85,10 +103,10 @@ export class TaskFormComponent {
   }
 
   hideContactsDropdown(){
-    setTimeout(() => this.showContactsDropdown = false, 200) 
+    this.showContactsDropdown = false;
   }
 
   hideTaskCategoryDropdown(){
-    setTimeout(() => this.showTaskCategoryDropdown = false, 200)
+    this.showTaskCategoryDropdown = false
   }
 }

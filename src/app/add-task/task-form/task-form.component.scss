@@ -42,6 +42,7 @@ section {
         .custom-dropdown li {
             padding: 0.5rem 1rem;
             cursor: pointer;
+
             &:hover {
                 background-color: #f0f0f0;;
             }
@@ -141,7 +142,6 @@ section {
 
     .input-with-image {
         border: 1px solid #D1D1D1;
-        border-radius: 10px;
         background: #FFFFFF;
         border-radius: 10px;
         cursor: pointer;
@@ -149,19 +149,20 @@ section {
         justify-content: space-between;
         align-items: center;
 
-        img {
-            margin-right: 8px;
-            padding-right: 12px;
-            padding-left: 12px;
-            padding-bottom: 12px;
-            padding-top: 12px;
-            border-radius: 50px;
-            border: none;
+        // img {
+        //     margin-right: 8px;
+        //     padding-right: 12px;
+        //     padding-left: 12px;
+        //     padding-bottom: 12px;
+        //     padding-top: 12px;
+        //     border-radius: 50px;
+        //     border: none;
+        //     border: 1px solid black;
 
-            &:hover {
-                background-color: #d9d9d9;
-            }
-        }
+        //     &:hover {
+        //         background-color: #d9d9d9;
+        //     }
+        // }
 
         input {
             border: none;
