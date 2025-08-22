@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SidebarComponent } from '../shared/components/sidebar/sidebar.component';
+import { AddNewContactComponent } from './add-new-contact/add-new-contact.component';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { DropdownComponent } from '../shared/components/dropdown/dropdown.component';
 
@@ -7,6 +8,7 @@ import { DropdownComponent } from '../shared/components/dropdown/dropdown.compon
   selector: 'app-contact',
   imports: [
     SidebarComponent,
+    AddNewContactComponent,
     HeaderComponent,
     DropdownComponent
   ],
