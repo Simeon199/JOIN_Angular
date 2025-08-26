@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AddContactPopUpService } from '../../shared/services/add-contact-pop-up.service';
 
 @Component({
   selector: 'app-add-new-contact',
@@ -9,4 +10,12 @@ import { Component } from '@angular/core';
 export class AddNewContactComponent {
   isHovered:boolean = false;
   isContactPopUpOpen:boolean = false;
+
+  constructor(private addContactPopUpService: AddContactPopUpService){
+    this.addContactPopUpService.addContactPopUpState$.subscribe(state => this.isContactPopUpOpen = state);
+  }
+
+  closeAddContactPopUp(){
+    this.addContactPopUpService.close();
+  }
 }
