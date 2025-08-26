@@ -1,4 +1,4 @@
-<section>
+<section [style]="isContactPopUpOpen ? 'display: flex' : 'display: none'">
     <div class="add-contact-logo-wrapper">
         <img src="./assets/img/join_logo_white.svg" alt="join_logo_white">
         <div class="h-section">
@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="main-wrapper">
-        <div class="close-img-wrapper">
+        <div class="close-img-wrapper" (click)="isContactPopUpOpen=false">
             <img src="assets/img/close.svg" alt="close-img">
         </div>
         <div class="form-wrapper">
@@ -35,9 +35,11 @@
                     </div>
                 </div>
                 <div class="button-section-wrapper">
-                    <button>
+                    <button 
+                        (mouseenter)="isHovered = true"
+                        (mouseleave)="isHovered = false">
                         <p>Cancel</p>
-                        <img src="assets/img/close.svg" alt="close-img">
+                        <img [src]="isHovered ? 'assets/img/close_blue.svg' : 'assets/img/close.svg'" alt="close-img">
                     </button>
                     <button>
                         <p>Create contact</p>

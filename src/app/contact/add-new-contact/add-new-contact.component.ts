@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './add-new-contact.component.scss'
 })
 export class AddNewContactComponent {
-
+  isHovered:boolean = false;
+  isContactPopUpOpen:boolean = false;
 }
