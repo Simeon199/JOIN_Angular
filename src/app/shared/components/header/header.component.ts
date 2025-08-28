@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { DropdownService } from '../../services/dropdown.service';
 import { Router } from '@angular/router';
+import { DropdownComponent } from "../dropdown/dropdown.component";
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [DropdownComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
