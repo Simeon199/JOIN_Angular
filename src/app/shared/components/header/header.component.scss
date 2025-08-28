@@ -1,10 +1,13 @@
 section {
+    position: relative;
+    font-family: 'Inter';
     display: flex;
     justify-content: center;
     align-items: center;
     height: 96px;
     box-shadow: 0px 4px 4px 0px #0000001A;
     background-color: #FFFFFF;
+    padding-left: 320px; // Minimum Breite von Sidebar !!!
 }
 
 .content-wrapper {
@@ -23,7 +26,6 @@ section {
     display: flex;
     align-items: center;
     gap: 16px;
-    position: absolute;
     right: 0;
     padding-right: 32px;
 
@@ -31,5 +33,31 @@ section {
         &:hover {
             cursor: pointer;
         }
+
+        :nth-child(2){
+            &:hover {
+                background-color: black;
+            }
+        }
+    }
+}
+
+.user-logo {
+    border: 3px solid #2A3647;
+    padding-right: 16px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+
+    h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #29ABE2;
+    }
+
+    &:hover {
+        background-color: #0C2E621F;
     }
 }
