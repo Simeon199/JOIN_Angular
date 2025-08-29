@@ -1,3 +1,5 @@
+@use '../../../breakpoints.scss' as breakpoint;
+
 section {
     position: absolute;
     left: 0;
@@ -92,4 +94,44 @@ a {
 
 .background-highlighting {
     background: #091931;
+}
+
+@include breakpoint.screen850 {
+    section {
+        padding-left: unset;
+        padding-top: unset;
+        max-width: unset;
+        top: unset;
+        right: 0;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .join-logo {
+        display: none;
+    }
+
+    .sidebar-link-wrapper {
+        padding-top: unset;
+        padding-bottom: unset;
+        max-width: 120px;
+        border-radius: 16px;
+    }
+
+    .sidebar-links {
+        width: 100dvw;
+        gap: unset;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .sidebar-link {
+        flex-direction: column;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .legal-privacy-links-container {
+        display: none;
+    }
 }
