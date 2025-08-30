@@ -1,3 +1,5 @@
+@use '../../breakpoints.scss' as breakpoint;
+
 section {
     font-family: 'Inter';
     font-size: 20px;
@@ -5,6 +7,10 @@ section {
     left: 30%;
     top: 20%;
     display: flex;
+}
+
+.close-img-wrapper-mobile {
+    display: none;
 }
 
 .add-contact-logo-wrapper {
@@ -177,4 +183,66 @@ section {
     border: 3px solid #29ABE2;
     border-radius: 3px;
     width: 100px;
+}
+
+@include breakpoint.screen850 {
+    section {
+        height: 100dvh;
+        width: 100dvw;
+        left: 0;
+        top: 0;
+        flex-direction: column;
+        z-index: 10000;
+    }
+
+    .close-img-wrapper-mobile {
+        display: flex;
+        position: absolute;
+        z-index: 100001;
+        background: white;
+        right: 16px;
+        top: 16px;
+        padding: 16px;
+        border-radius: 50%;
+        cursor: pointer;
+
+        img {
+            width: 16px;
+        }
+    }
+
+    .main-wrapper {
+        height: 50dvh;
+        border-radius: 0;
+        align-items: center;
+    }
+
+    .add-contact-logo-wrapper {
+        border-radius: 0;
+        height: 50dvh;
+
+        img {
+            display: none;
+        }
+    }
+
+    .image-container {
+        img {
+            position: absolute;
+            bottom: calc((100dvh - 120px) / 2);
+            right: calc((100dvw - 120px) / 2);
+        }
+    }
+
+    .close-img-wrapper {
+        display: none;
+    }
+
+    .button-section-wrapper{
+        justify-content: center;
+    }
+
+    .form-wrapper {
+        gap: unset;
+    }
 }

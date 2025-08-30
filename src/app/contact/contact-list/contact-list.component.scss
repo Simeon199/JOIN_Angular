@@ -1,3 +1,5 @@
+@use '../../breakpoints.scss' as breakpoint;
+
 section {
     width: 400px;
     left: 320px;
@@ -31,6 +33,26 @@ section {
         &:hover {
             background-color: #29ABE2;
             box-shadow: 0px 4px 4px 0px #00000040;
+        }
+    }
+}
+
+@include breakpoint.screen850 {
+    section {
+        width: 100dvw;
+        left: 0;
+
+        button {
+            position: absolute;
+            bottom: 100px;
+            right: 16px;
+            border-radius: 50%;
+            width: 64px;
+            padding: 20px;
+
+            p {
+                display: none;
+            }
         }
     }
 }
