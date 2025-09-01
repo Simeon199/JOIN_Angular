@@ -1,3 +1,5 @@
+@use '../breakpoints' as breakpoint;
+
 app-task-form {
     position: absolute;
     left: 320px;
@@ -5,4 +7,12 @@ app-task-form {
     width: calc((100dvw - 320px));
     height: calc((100dvh - 96px));
     padding: 50px;
+}
+
+@include breakpoint.screen850 {
+    app-task-form {
+        position: unset;
+        padding: unset;
+        width: 100%;
+    }
 }
