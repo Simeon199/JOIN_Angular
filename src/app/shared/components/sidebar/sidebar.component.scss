@@ -98,11 +98,12 @@ a {
 
 @include breakpoint.screen850 {
     section {
+        position: unset;
         padding-left: unset;
         padding-top: unset;
         max-width: unset;
         top: unset;
-        right: 0;
+        // right: 0;
         flex-direction: row;
         justify-content: center;
     }

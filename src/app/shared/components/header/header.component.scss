@@ -11,6 +11,7 @@ section {
     box-shadow: 0px 4px 4px 0px #0000001A;
     background-color: #FFFFFF;
     padding-left: 320px; // Minimum Breite von Sidebar !!!
+    z-index: 10;
 }
 
 .content-wrapper {

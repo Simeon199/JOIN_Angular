@@ -9,6 +9,10 @@ app-task-form {
     padding: 50px;
 }
 
+.main-content-wrapper {
+    overflow: hidden;
+}
+
 @include breakpoint.screen850 {
     app-task-form {
         position: unset;

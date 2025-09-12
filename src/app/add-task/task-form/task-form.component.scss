@@ -211,16 +211,26 @@ section {
 
 @include breakpoint.screen850 {
     section {
+        padding: 24px;
+
         form {
             flex-direction: column;
+            gap: 24px;
         }
 
-        // .button-section {
-        //     position: unset;
-        // }
+        .button-section {
+            position: unset;
+        }
+    }
+
+    .input-with-image {
+        img {
+            padding: 12px;
+        }
     }
 
     .parting-line {
         display: none;
+        position: unset;
     }
 }
